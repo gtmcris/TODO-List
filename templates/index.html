@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h1> My TODO List </h1>
+<form action="/" method="post">
+    <input type="text" name="newtask" autofocus autocomplete="off" placeholder="Enter a new task">
+    <button type="submit">Add new task</button>
+
+    <ul id="todo-list">
+        {% for task in todo_list %}
+        <li><input type="checkbox" name="task{{loop.index}}" id="{{loop.index}}">
+            {% if task %}
+                <label for="{{loop.index}}">{{task}}</label>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</form>
+
+{% endblock %}
